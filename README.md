@@ -1,19 +1,21 @@
 # foundation-pure-html-page
 
-foundation-pure-html 의 컴포넌트 스타일을 서비스에 포함시키기 위해서 서브모듈 등록 한다.
+[//]: # (## 서브모듈 등록)
 
-## 요구사항
+[//]: # ()
+[//]: # (- 현재 저장소에서, 서브모듈을 등록한다.)
 
-- 물리적 파일이 실제로 포함되서 번들이 되고, 업데이트 내용도 손쉽게 관리하길 원함
+[//]: # ()
+[//]: # (```terminal)
 
-## 서브모듈 등록
+[//]: # (// git submodule add <저장소URL> <저장될 폴더이름>)
 
-- 현재 저장소에서, 서브모듈을 등록한다.
+[//]: # ($> git submodule add https://github.com/richfaber/foundation-pure-html component)
 
-```terminal
-// git submodule add <저장소URL> <저장될 폴더이름>
-$> git submodule add https://github.com/richfaber/foundation-pure-html component
-```
+[//]: # (```)
+
+n개 프로젝트 구성에서, 스타일가이드의 작업분이 논리적 연결이 되어야 한다.  
+이렇게 프로젝트에 종속된 스타일가이드는, 프로젝트 build 에 포함되어, 배포된다.
 
 ## 처음 클론 후
 
@@ -22,14 +24,14 @@ $> git submodule update --init
 $> git submodule foreach git checkout main
 ```
 
-## 서브모듈 업데이트 포함해서 클론 받기
-
-```terminal
-$> git clone --recurse-submodules https://github.com/richfaber/foundation-pure-html-page
-```
-
 ## 서브모듈 내용 업데이트 하기
 
 ```terminal
 $> git submodule update --remote --merge
+```
+
+## 서브모듈 업데이트 포함 해서 클론 받기
+
+```terminal
+$> git clone --recurse-submodules https://github.com/richfaber/foundation-pure-html-page
 ```
