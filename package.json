@@ -1,11 +1,11 @@
 {
-    "name": "foundationPureHtml",
+    "name": "foundationPureHtmlPage",
     "version": "0.0.0",
     "description": "",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "http://github.com/richfaber/foundation-pure-html"
+        "url": "http://github.com/richfaber/foundation-pure-html-page"
     },
     "scripts": {
         "clean": "recursive-delete dist",
