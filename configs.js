@@ -36,6 +36,7 @@ const configs = {
 }
 
 configs.js = {
+  page: [ 'page/**/*' ],
   chunk: [ 'ui-vendor.js', 'ui-polyfill.js' ],
   src: `${ configs.root }/resource/js`,
   dest: `${ configs.dest }/resource/js`
@@ -50,6 +51,7 @@ configs.html = {
     'cwd': process.cwd(),
     'flatten': false,
   },
+
   format: {
     indent_size: 2, // 들여쓰기 크기 [4]
     indent_char: ' ', // 들여쓰기 문자 [' ']
@@ -58,6 +60,7 @@ configs.html = {
     indent_inner_html: false, // <head> 및 <body> 섹션을 들여씀
     indent_empty_lines: false, // 빈라인을 유지할지 여부
   },
+
   relativePath: true // 상대경로 변환 여부
 }
 
@@ -69,14 +72,13 @@ configs.css = {
   sourceMapContents: configs.sourceMap,
   indentType: 'space',
   indentWidth: 2,
-  // outputStyle: configs.minify ? 'compressed' : 'expanded',
-  outputStyle: 'compressed',
+  outputStyle: configs.minify ? 'compressed' : 'expanded'
 }
 
 configs.img = {
   type: '/**/*.{jpg,jpeg,png,gif,svg}',
-  src: `${configs.root}/resource/image`,
-  dest: `${configs.dest}/resource/image`
+  src: `${ configs.root }/resource/image`,
+  dest: `${ configs.dest }/resource/image`
 }
 
 const plugins = {
