@@ -37,7 +37,7 @@ const configs = {
 
 configs.js = {
   page: [ 'page/**/*' ],
-  chunk: [ 'ui-vendor.js', 'ui-polyfill.js' ],
+  chunk: [ 'ui-vendor.js' ],
   src: `${ configs.root }/resource/js`,
   dest: `${ configs.dest }/resource/js`
 }

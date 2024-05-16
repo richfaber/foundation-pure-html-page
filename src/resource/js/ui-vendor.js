@@ -1,4 +1,4 @@
-// 벤더
-import jQuery from 'jquery'
-
-window.jQuery = window.$ = jQuery
+/**
+ * 벤더
+ */
+console.log( `공통 vendor jQuery Loaded: ${ $().jquery }` )
