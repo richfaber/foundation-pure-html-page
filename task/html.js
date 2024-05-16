@@ -15,8 +15,6 @@ let isWatch = !!argv.length
 let files = [ argv[0] ]
 let event = [ argv[1] ] // add, unlink
 
-const isSubmodule = (process.env.NODE_ENV === 'submodule')
-
 function compatiblePath( str ) {
   return str.replace( /\\/g, '/' )
 }
@@ -58,23 +56,6 @@ function compileHtml() {
 
       for ( const file of files ) {
 
-        if ( isSubmodule ) {
-
-          /*
-            nunjucksToHtml 플러그인이 상위폴더를 기준으로 했을 경우에, '/dist/poscmm/component/component' 로 생성함.
-            플러그인을 대응할 방법이 없어서, 생성 후 '/dist/poscmm/component' 로 이동하는 로직
-          */
-          const oldFilePath = path.join( configs.dest + '/component', file ).replace( '.njk', '.html' );
-          const newFilePath = path.join( configs.dest, file ).replace( '.njk', '.html' );
-
-          try {
-            await moveFile( oldFilePath, newFilePath );
-          } catch ( error ) {
-            console.error( `파일 처리 중 오류가 발생했습니다: ${ error }` );
-          }
-
-        }
-
         const filePath = `${ configs.dest }/${ file }`.replace( '.njk', '.html' );
 
         try {
@@ -99,16 +80,9 @@ function compileHtml() {
 
       return path.join( configs.dest + '/component/component' )
 
-    } ).then( async ( legacyFolder ) => {
+    } ).catch( ( error ) => {
 
-    // nunjucks 의 legacy 폴더를 삭제
-    if ( isSubmodule ) {
-      await fsp.rm( legacyFolder, { recursive: true, force: true } );
-    }
-
-  } ).catch( ( error ) => {
-
-    console.log( 'error ->\n', error )
+      console.log( 'error ->\n', error )
 
   } );
 }
