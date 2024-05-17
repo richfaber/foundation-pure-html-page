@@ -18,7 +18,6 @@ const isWatch = !!argv.length
 
 // 컴파일 제외 대상파일
 const isIgnore = isWatch && !/^src[\/\\]layout/.test( files[0] ) || /^src[\/\\]import/.test( files[0] )
-const isSubmodule = (process.env.GIT_ENV === 'submodule')
 
 function compatiblePath( str ) {
   return str.replace( /\\/g, '/' )
@@ -105,7 +104,7 @@ if ( isWatch && isIgnore ) {
 
 } else {
 
-  globby( [ `${ configs.root }/**/*.njk`, `!${ configs.root }/layout/**` ] ).then( filePaths => {
+  globby( [ `${ configs.root }/**/*.njk`, `!${ configs.root }/layout/**`, `!${ configs.root }/import/**` ] ).then( filePaths => {
     files = filePaths.map( filePath => filePath.replace( 'src/', '' ) )
   } ).then( compileHtml )
 
