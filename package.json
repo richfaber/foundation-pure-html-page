@@ -27,7 +27,9 @@
         "watch": "npm-run-all -p watch:css watch:js-chunk watch:js-page watch:img watch:html watch:html-lint",
         "watch:child": "cd component && npm run watch:forparent",
         "server:start": "babel-node task/server",
-        "server": "npm-run-all -p clean build:dirty server:start watch watch:child"
+        "server": "npm-run-all -p clean build:dirty server:start watch watch:child",
+        "submodule:install": "git submodule update --init && git submodule foreach git checkout main && git submodule foreach npm install",
+        "submodule:update": "git submodule update --remote --merge"
     },
     "devDependencies": {
         "@babel/cli": "^7.24.5",
